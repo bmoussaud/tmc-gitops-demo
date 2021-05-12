@@ -1,7 +1,7 @@
 fullName:
-  managementClusterName: bmoussaud-mgt-cluster-aws
-  name: bmoussaud-aws-one
-  provisionerName: default
+  managementClusterName: aws-hosted
+  name: bmoussaud-dev-one
+  provisionerName: bmoussaud-aws
 meta:
   description: created by the CLI
   labels: 
@@ -12,7 +12,7 @@ spec:
   clusterGroupName: bmoussaud-dev
   tkgAws:
     distribution:
-      provisionerCredentialName: bmoussaud-aws-credential
+      provisionerCredentialName: bmoussaud-aws-credential-ng
       region: eu-west-3
       version: 1.19.4-1-amazon2
     settings:
