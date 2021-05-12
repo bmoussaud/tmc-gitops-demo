@@ -1,8 +1,12 @@
-typeMeta:
-  kind: ClusterGroup
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.clustergroup
-objectMeta:
-  description: 
 fullName:
-  name: staging
+  name: bmoussaud-test
+meta:  
+  description: My Cluster Group for tester.
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: test
+type:
+  kind: ClusterGroup
+  package: vmware.tanzu.manage.v1alpha1.clustergroup
+  version: v1alpha1
