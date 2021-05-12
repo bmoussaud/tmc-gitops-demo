@@ -3,7 +3,7 @@ typeMeta:
   version: v1alpha
   package: vmware.tanzu.mc.v1alpha.workspace.iampolicy
 fullName:
-  name: acme-fitness-dev-staging
+  name: micropet-dev-staging
 roleBindings:
 - role: workspace.admin
   subjects:
