@@ -1,6 +1,0 @@
-typeMeta:
-  kind: Workspace
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace
-fullName:
-  name: acme-fitness-production
