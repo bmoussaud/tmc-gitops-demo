@@ -7,3 +7,9 @@ Tested with
 * clustergroup
 
 Based on https://www.youtube.com/watch?v=_ROS1xIBxmA
+
+# Demo
+
+1. Create a new Cluster Group
+2. Create a new Cluster
+3. Create a new Workspace

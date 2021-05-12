@@ -1,0 +1,12 @@
+fullName:
+  name: bmoussaud-micropet-dev-staging 
+meta:  
+  description: "MicroPet Workspace for Dev"
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: dev
+type:
+  kind: Workspace
+  package: vmware.tanzu.manage.v1alpha1.workspace
+  version: v1alpha1

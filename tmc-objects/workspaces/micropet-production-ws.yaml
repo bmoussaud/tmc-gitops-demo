@@ -1,0 +1,12 @@
+fullName:
+  name: bmoussaud-micropet-production
+meta:  
+  description: "MicroPet Workspace for Ops"
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: ops    
+type:
+  kind: Workspace
+  package: vmware.tanzu.manage.v1alpha1.workspace
+  version: v1alpha1
