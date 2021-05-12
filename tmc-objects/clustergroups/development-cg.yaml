@@ -1,0 +1,12 @@
+fullName:
+  name: bmoussaud-dev
+meta:  
+  description: My Cluster Group for developpers.
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: dev
+type:
+  kind: ClusterGroup
+  package: vmware.tanzu.manage.v1alpha1.clustergroup
+  version: v1alpha1
