@@ -13,3 +13,6 @@ Based on https://www.youtube.com/watch?v=_ROS1xIBxmA
 1. Create a new Cluster Group
 2. Create a new Cluster
 3. Create a new Workspace
+4. Apply policies on clusters
+5. upgrade the dev cluster
+
