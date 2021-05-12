@@ -16,6 +16,7 @@ apply_state () {
     version=$(grep -m 1 "version:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
     package=$(grep -m 1 "package:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
     name=$(grep -m 1 "name:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
+    echo "${kind}/${version}/${package}/${name}"
 
     if [[ ${kind} == "ClusterGroup" ]]
     then
