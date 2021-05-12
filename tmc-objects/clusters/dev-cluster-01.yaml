@@ -1,47 +1,38 @@
-typeMeta:
-  kind: Cluster
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.cluster
 fullName:
-  name: dev-cluster-01
-  location: global
-objectMeta:
-  description: ''
-  labels: {}
+  managementClusterName: bmoussaud-mgt-cluster-aws
+  name: bmoussaud-aws-one
+  provisionerName: default
+meta:
+  description: created by the CLI
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: dev01
 spec:
-  clusterGroupName: development
-  provisionedcluster:
-    high_availability: false
-    accountName: keithlee-aws
-    version: 1.18.3-1-amazon2
-    cloudProviderConfig:
-      awsConfig:
-        azList:
-        - us-east-2a
-        controlPlaneVmFlavor: m5.large
-        networkSpec:
-          vpc:
-            cidrBlock: 10.0.0.0/16
-        region: us-east-2
-        sshKeyName: keithlee-aws-tmc
-    networkConfig:
-      podCidr: 192.168.0.0/16
-      serviceCidr: 10.96.0.0/12
-    node_pool:
-    - full_name:
-        name: default-node-pool
-        location: global
-        cluster_name: dev-cluster-01
-        provisionedcluster_name: dev-cluster-01
-      object_meta:
-        description: ''
-      spec:
-        cloud_provider_config:
-          aws_config:
-            instance_type: m5.large
-            zone:
-            - us-east-2a
-        worker_node_count: '1'
-        node_label_map: {}
-        cloud_label_map: {}
-        version: 1.18.3-1-amazon2
+  clusterGroupName: bmoussaud-dev
+  tkgAws:
+    distribution:
+      provisionerCredentialName: bmoussaud-aws-credential
+      region: eu-west-3
+      version: 1.19.4-1-amazon2
+    settings:
+      security:
+        sshKey: tmc-keypair
+    topology:
+      controlPlane:
+        availabilityZones:
+        - eu-west-3a
+        instanceType: m5.large
+      nodePools:
+      - info:
+          description: default description for the nodepool
+          name: default-node-pool
+        spec:
+          tkgAws:
+            availabilityZone: eu-west-3a
+            instanceType: m5.large
+          workerNodeCount: 1
+type:
+  kind: Cluster
+  package: vmware.tanzu.manage.v1alpha1.cluster
+  version: v1alpha1
