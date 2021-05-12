@@ -1,9 +1,8 @@
-typeMeta:
+type:
   kind: IAMPolicy
   version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace.iampolicy
-fullName:
-  name: micropet-dev-staging
+  package: vmware.tanzu.manage.v1alpha.workspace.iampolicy  
+workspaceName: micropet-dev        
 roleBindings:
 - role: workspace.admin
   subjects:

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -x 
 apply_state () {
     delete=0
     if [[ -f ${1} ]]
@@ -106,17 +106,17 @@ apply_state () {
         then
             command="workspace"
         fi
-        name=$(grep -m 1 "name:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
+        workspaceName=$(grep -m 1 "workspaceName:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
         if [[ delete -eq 1 ]]
         then
-            tmc ${command} iam delete ${name}
+            tmc ${command} iam delete ${workspaceName}
         else
-            op=$(tmc ${command} iam get-policy ${name})
+            op=$(tmc ${command} iam get-policy ${workspaceName})
             if [[ $? -eq 0 ]]
             then
                 echo "Already exists. Updating."
                 sed -n '/roleBindings/,$p' ${1} > tmpfile.yaml
-                tmc ${command} iam update-policy ${name} -f tmpfile.yaml
+                tmc ${command} iam update-policy ${workspaceName} -f tmpfile.yaml -v 9
                 rm tmpfile.yaml
 	    fi
         fi
