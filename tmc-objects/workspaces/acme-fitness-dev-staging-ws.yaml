@@ -1,6 +1,12 @@
-typeMeta:
-  kind: Workspace
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace
 fullName:
-  name: acme-fitness-dev-staging 
+  name: micropet-dev-staging 
+meta:  
+  description: "MicroPet Workspace for Dev"
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: dev01
+type:
+  kind: Workspace
+  package: vmware.tanzu.manage.v1alpha1.workspace
+  version: v1alpha1
