@@ -1,6 +1,6 @@
 type:
   kind: IAMPolicy
-  version: v1alpha
+  version: v1alpha2
   package: vmware.tanzu.manage.v1alpha.workspace.iampolicy  
 workspaceName: micropet-dev        
 roleBindings:
