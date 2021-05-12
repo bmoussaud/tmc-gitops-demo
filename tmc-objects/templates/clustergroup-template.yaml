@@ -1,0 +1,53 @@
+typeMeta:
+  kind: Template
+  package: vmware.olympus.v1alpha.template
+  version: v1alpha
+fullName:
+  name: default
+objectMeta:
+  description: "A default ClusterGroup object."
+engine: GO_TEXT
+data: |
+  typeMeta:
+      kind: ClusterGroup
+      package: vmware.olympus.v1alpha.clustergroup
+      version: v1alpha
+  fullName:
+      name: "{{ .Name }}"
+  objectMeta:
+    annotations:
+    {{- range $k, $v := .Annotations }}
+      "{{ $k }}": "{{ $v }}"
+    {{- end }}
+    description: "{{ .Description }}"
+    labels:
+    {{- range $k, $v := .Labels }}
+      "{{ $k }}": "{{ $v }}"
+    {{- end }}
+input:
+  - field: Name
+    short: "n"
+    default: "$generateName"
+    type: string
+    immutable: true
+    description: Name to apply to the resource 
+  - field: Description
+    short: d
+    type: string
+    description: description of the role.
+    paths:
+    - objectMeta.description
+  - field: Labels
+    short: l
+    type: map
+    items: string
+    description: Labels to apply to the resource.
+    paths:
+    - objectMeta.labels
+  - field: Annotations
+    short: z
+    type: map
+    items: string
+    description: Annotations to apply to the resource
+    paths:
+    - objectMeta.annotations

@@ -1,0 +1,49 @@
+typeMeta:
+  kind: Cluster
+  version: v1alpha
+  package: vmware.tanzu.mc.v1alpha.cluster
+fullName:
+  name: prod-cluster-01
+  location: global
+objectMeta:
+  description: ''
+  labels: {}
+spec:
+  clusterGroupName: production
+  provisionedcluster:
+    high_availability: true
+    accountName: keithlee-aws
+    version: 1.17.6-1-amazon2
+    cloudProviderConfig:
+      awsConfig:
+        azList:
+        - us-east-2a
+        - us-east-2b
+        - us-east-2c
+        controlPlaneVmFlavor: m5.large
+        networkSpec:
+          vpc:
+            cidrBlock: 10.0.0.0/16
+        region: us-east-2
+        sshKeyName: keithlee-aws-tmc
+    networkConfig:
+      podCidr: 192.168.0.0/16
+      serviceCidr: 10.96.0.0/12
+    node_pool:
+    - full_name:
+        name: default-node-pool
+        location: global
+        cluster_name: prod-cluster-01
+        provisionedcluster_name: prod-cluster-01
+      object_meta:
+        description: ''
+      spec:
+        cloud_provider_config:
+          aws_config:
+            instance_type: m5.large
+            zone:
+            - us-east-2a
+        worker_node_count: '3'
+        node_label_map: {}
+        cloud_label_map: {}
+        version: 1.17.6-1-amazon2

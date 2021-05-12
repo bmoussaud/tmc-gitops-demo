@@ -1,0 +1,21 @@
+typeMeta:
+  kind: Policy
+  version: v1alpha
+  package: vmware.tanzu.mc.v1alpha.workspace.policy
+fullName:
+  name: deny-all-to-pods-nw-policy
+  workspaceName: acme-fitness-dev-staging
+spec:
+  inputValues:
+    to_pod_labels:
+      list:
+        values:
+        - map:
+            value:
+              key:
+                str: app
+              value:
+                str: acme
+  policyType: network-policy
+  recipeName: deny-all-to-pods
+

@@ -1,0 +1,21 @@
+typeMeta:
+  kind: Template
+  package: vmware.tanzu.mc.v1alpha.common.policy
+  version: v1alpha
+fullName:
+  name: default-iam
+objectMeta:
+  description: default template for the iam-policy resource
+data: |
+  objectMeta:
+    annotations:
+      "": ""
+    description: ""
+    labels:
+      "": ""
+  roleBindings:
+  - role: ""
+    subjects:
+    - kind: ""
+      name: ""
+engine: GO_TEXT

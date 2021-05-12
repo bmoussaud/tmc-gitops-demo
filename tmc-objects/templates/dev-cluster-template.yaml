@@ -1,0 +1,128 @@
+typeMeta:
+    kind: Template
+    package: vmware.tanzu.mc.v1alpha.cluster
+    version: v1alpha
+fullName:
+    name: default
+objectMeta:
+    description: "A simple AWS dev cluster."
+engine: GO_TEXT
+data: |
+    typeMeta:
+        kind: Cluster
+        package: vmware.olympus.v1alpha.cluster
+        version: v1alpha
+    fullName:
+        location: "global"
+        name: "{{ .Name }}"
+    objectMeta:
+        description: "a simple aws cluster"
+        labels:
+        {{- range $k, $v := .Labels }}
+            "{{ $k }}": "{{ $v }}"
+        {{- end }}
+        annotations:
+            "vmware.tanzu.mc.template": "default"
+        {{- range $k, $v := .Annotations }}
+            "{{ $k }}": "{{ $v }}"
+        {{- end }}
+    spec:
+        clusterGroupName: "{{ .Group }}"
+        provisionedcluster:
+            accountName: "{{ .AccountName }}"
+            cloudProviderConfig:
+                awsConfig:
+                    controlPlaneVmFlavor: "{{ .InstanceType }}"
+                    region: "{{ .Region }}"
+                    sshKeyName: "{{ .SSHKeyName }}"
+                    network_spec:
+                        vpc:
+                            cidr_block: "10.0.0.0/16"
+            highAvailability: false
+            networkConfig:
+                podCidr: "192.168.0.0/16"
+                serviceCidr: "10.96.0.0/12"
+            version: "{{ .Version }}"
+            nodePool:
+            - fullName:
+                name: "{{ .NodePoolName }}"
+                clusterName: "{{ .Name }}"
+                provisionedclusterName: "{{ .Name }}"
+                location: "global"
+              spec:
+                cloudProviderConfig:
+                    awsConfig:
+                        instanceType: "{{ .InstanceType }}"
+                workerNodeCount: {{ .WorkerNodeCount }}
+                version: "{{ .Version }}"
+input:
+  - field: Name
+    short: "n"
+    default: "$generateName"
+    type: string
+    description: Name of the resource
+    immutable: true
+  - field: Labels
+    short: l
+    type: map
+    items: string
+    description: Labels to apply to the resource
+    paths:
+    - objectMeta.labels
+  - field: Annotations
+    short: z
+    type: map
+    items: string
+    description: Annotations to apply to the resource
+    paths:
+    - objectMeta.annotations
+  - field: AccountName
+    short: c
+    required: true
+    env: "TMC_CREDENTIAL"
+    type: string
+    description: Credential to use for provisioning resources
+    immutable: true
+  - field: NodePoolName
+    short: p
+    default: "default-node-pool"
+    type: string
+    description: Name of the node pool
+    immutable: true
+  - field: SSHKeyName
+    short: s
+    required: true
+    type: string
+    env: "TMC_AWS_SSH_KEY"
+    description: Name of the SSH key in AWS to use for provisioning
+    immutable: true
+  - field: InstanceType
+    short: "y"
+    default: "m5.large"
+    type: string
+    description: The instance type in AWS
+    immutable: true
+  - field: Region
+    short: r
+    default: "us-west-2"
+    type: string
+    description: Name of the region in your cloud provider in which to create the cluster
+    immutable: true
+  - field: Group
+    short: g
+    type: string
+    description: The cluster group to add this cluster to
+    default: "default"
+    immutable: true
+  - field: Version
+    type: string
+    description: The version of Kubernetes to use for this cluster
+    default: ""
+  - field: WorkerNodeCount
+    short: q
+    default:  1
+    type: number
+    description: number of worker nodes
+    immutable: true
+examples:
+  "create a cluster with the default template": "tmc cluster create -t aws-ha -c my-credential -s my-ssh-key"

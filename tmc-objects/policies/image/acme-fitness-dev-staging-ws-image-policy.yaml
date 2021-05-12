@@ -1,0 +1,15 @@
+typeMeta:
+  kind: Policy
+  version: v1alpha
+  package: vmware.tanzu.mc.v1alpha.workspace.policy
+fullName:
+  name: allow-registry-policy
+  workspaceName: acme-fitness-dev-staging
+spec:
+  policyType: image-policy
+  recipeName: allow-registry
+  inputValues:
+    registry_repos:
+      list:
+        values:
+        - str: gcr.io

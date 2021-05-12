@@ -1,0 +1,52 @@
+typeMeta:
+  kind: Template
+  package: vmware.olympus.v1alpha.template
+  version: v1alpha
+fullName:
+  name: default
+objectMeta:
+  description: "A default Workspace object."
+engine: GO_TEXT
+data: |
+  typeMeta:
+      kind: Workspace
+      package: vmware.olympus.v1alpha.workspace
+      version: v1alpha
+  fullName:
+      name: "{{ .Name }}"
+  objectMeta:
+  {{- range $k, $v := .Annotations }}
+      "{{ $k }}": "{{ $v }}"
+  {{- end }}
+    description: "{{ .Description }}"
+    labels:
+  {{- range $k, $v := .Labels }}
+      "{{ $k }}": "{{ $v }}"
+  {{- end }}
+input:
+  - field: Name
+    short: "n"
+    default: "$generateName"
+    type: string
+    description: Name to apply to the resource 
+    immutable: true
+  - field: Description
+    short: d
+    type: string
+    description: description of the data protection resource.
+    paths:
+      - objectMeta.description
+  - field: Labels
+    short: l
+    type: map
+    items: string
+    description: Labels to apply to the resource.
+    paths:
+      - objectMeta.labels
+  - field: Annotations
+    short: z
+    type: map
+    items: string
+    description: Annotations to apply to the resource
+    paths:
+      - objectMeta.annotations

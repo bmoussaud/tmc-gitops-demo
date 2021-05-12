@@ -1,0 +1,8 @@
+typeMeta:
+  kind: ClusterGroup
+  version: v1alpha
+  package: vmware.tanzu.mc.v1alpha.clustergroup
+objectMeta:
+  description: 
+fullName:
+  name: development 

@@ -1,0 +1,166 @@
+typeMeta:
+    kind: Template
+    package: vmware.tanzu.mc.v1alpha.cluster
+    version: v1alpha
+fullName:
+    name: aws-ha
+objectMeta:
+    description: "A highly available AWS cluster."
+engine: GO_TEXT
+data: |
+    typeMeta:
+        kind: Cluster
+        package: vmware.olympus.v1alpha.cluster
+        version: v1alpha
+    fullName:
+        location: "global"
+        name: "{{ .Name }}"
+    objectMeta:
+        labels:
+        {{- range $k, $v := .Labels }}
+            "{{ $k }}": "{{ $v }}"
+        {{- end }}
+        description: "A highly available AWS cluster"
+        annotations:
+            "vmware.tanzu.mc.template": "aws-ha"
+        {{- range $k, $v := .Annotations }}
+            "{{ $k }}": "{{ $v }}"
+        {{- end }}
+    spec:
+        clusterGroupName: "{{ .Group }}"
+        provisionedcluster:
+            accountName: "{{ .AccountName }}"
+            cloudProviderConfig:
+                awsConfig:
+                    controlPlaneVmFlavor: "{{ .InstanceType }}"
+                    region: "{{ .Region }}"
+                    sshKeyName: "{{ .SSHKeyName }}"
+                    azList:
+                    {{- range $i, $value := .AZList }}
+                      - "{{ $value }}"
+                    {{- end }}
+                    networkSpec:
+                        vpc:
+                            cidr_block: "{{ .VPCCidr }}"
+            highAvailability: true
+            networkConfig:
+                podCidr: "{{ .PodCidr }}"
+                serviceCidr: "{{ .ServiceCidr }}"
+            version: "{{ .Version }}"
+            nodePool:
+            - fullName:
+                name: "{{ .NodePoolName }}"
+                clusterName: "{{ .Name }}"
+                provisionedclusterName: "{{ .Name }}"
+                location: "global"
+              spec:
+                cloudProviderConfig:
+                    awsConfig:
+                        instanceType: "{{ .InstanceType }}"
+                        zone:
+                        {{- range $i, $value := .NodePoolZone }}
+                          - "{{ $value }}"
+                        {{- end }}
+                workerNodeCount: {{ .WorkerNodeCount }}
+                version: "{{ .Version }}"
+input:
+  - field: Name
+    short: "n"
+    default: "$generateName"
+    type: string
+    description: Name to apply to the resource .
+    immutable: true
+  - field: Labels
+    short: l
+    type: map
+    items: string
+    description: Labels to apply to the resource.
+    paths:
+      - objectMeta.labels
+  - field: Annotations
+    short: z
+    type: map
+    items: string
+    description: Annotations to apply to the resource
+    paths:
+      - objectMeta.annotations
+  - field: AccountName
+    short: c
+    required: true
+    env: "TMC_CREDENTIAL"
+    type: string
+    description: account name to use for provisioning resources.
+    immutable: true
+  - field: NodePoolName
+    short: p
+    default: "$generateName"
+    type: string
+    description: name of the node pool.
+    immutable: true
+  - field: SSHKeyName
+    short: s
+    required: true
+    env: "TMC_AWS_SSH_KEY"
+    type: string
+    description: name of the SSH key to use for provisioning.
+    immutable: true
+  - field: InstanceType
+    short: "y"
+    default: "m5.large"
+    type: string
+    description: aws intance type.
+    immutable: true
+  - field: WorkerNodeCount
+    short: "q"
+    default:  5
+    type: number
+    description: number of worker nodes
+    immutable: true
+  - field: Region
+    short: r
+    default: "us-west-2"
+    type: string
+    description: cloud provider region.
+    immutable: true
+  - field: Group
+    short: g
+    type: string
+    description: The cluster group to which to add this cluster
+    default: "default"
+    immutable: true
+  - field: AZList
+    short: j
+    description: list of availability zones.
+    type: list
+    items: string
+    immutable: true
+    default:
+      - "us-west-2a"
+      - "us-west-2b"
+      - "us-west-2c"
+  - field: NodePoolZone
+    short: m
+    description: node pool zone.
+    type: list
+    items: string
+    default:
+      - "us-west-2a"
+  - field: VPCCidr
+    short: u
+    default: "10.0.0.0/16"
+    type: string
+    description: VPC cidr for the cluster
+  - field: PodCidr
+    short: x
+    default: "192.168.0.0/16"
+    type: string
+    description: cluster pod cidr
+  - field: ServiceCidr
+    short: d
+    default: "10.96.0.0/12"
+    type: string
+    description: cluster service cidr
+  - field: Version
+    type: string
+    description: kubernetes version
+    default: ""

@@ -1,0 +1,47 @@
+typeMeta:
+  kind: Cluster
+  version: v1alpha
+  package: vmware.tanzu.mc.v1alpha.cluster
+fullName:
+  name: tkg-dev-03
+  location: global
+objectMeta:
+  description: ''
+  labels: {}
+spec:
+  clusterGroupName: development
+  provisionedcluster:
+    high_availability: false
+    accountName: keithlee-aws-lcm
+    version: 1.18.5-2-amazon2
+    cloudProviderConfig:
+      awsConfig:
+        azList:
+        - us-east-1a
+        controlPlaneVmFlavor: m5.large
+        networkSpec:
+          vpc:
+            cidrBlock: 10.0.0.0/16
+        region: us-east-1
+        sshKeyName: keithlee-aws-tmc-ssh-kp
+    networkConfig:
+      podCidr: 192.168.0.0/16
+      serviceCidr: 10.96.0.0/12
+    node_pool:
+    - full_name:
+        name: default-node-pool
+        location: global
+        cluster_name: tkg-dev-03
+        provisionedcluster_name: tkg-dev-03
+      object_meta:
+        description: ''
+      spec:
+        cloud_provider_config:
+          aws_config:
+            instance_type: m5.large
+            zone:
+            - us-east-1a
+        worker_node_count: '1'
+        node_label_map: {}
+        cloud_label_map: {}
+        version: 1.18.5-2-amazon2
