@@ -4,3 +4,4 @@ This is a demo repo that showcases how the GitOps model might be used to create/
 
 Tested with 
 * tmc version: 0.2.1-7e9c62fc
+* clustergroup
