@@ -102,7 +102,7 @@ apply_state () {
 
     if [[ ${kind} == "IAMPolicy" ]]
     then
-        if [[ ${package} == "vmware.tanzu.mc.v1alpha.workspace.iampolicy" ]]
+        if [[ ${package} == "vmware.tanzu.manage.v1alpha.workspace.iampolicy" ]]
         then
             command="workspace"
         fi
