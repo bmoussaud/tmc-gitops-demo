@@ -4,7 +4,7 @@ typeMeta:
   package: vmware.tanzu.mc.v1alpha.workspace.policy
 fullName:
   name: allow-registry-policy
-  workspaceName: acme-fitness-dev-staging
+  workspaceName: bmoussaud-micropet-dev
 spec:
   policyType: image-policy
   recipeName: allow-registry
