@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x 
+# set -x 
 apply_state () {
     delete=0
     if [[ -f ${1} ]]
