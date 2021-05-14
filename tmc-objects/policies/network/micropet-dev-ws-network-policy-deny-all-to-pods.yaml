@@ -7,9 +7,8 @@ fullName:
   workspaceName: bmoussaud-micropet-dev
 spec:
     type: network-policy
-    recipe: deny-all-to-pods
+    recipe: deny-all-to-pods   
     input:
-      to_pod_labels:      
+      toPodLabels:
       - key: app
         value: micropet
-      
