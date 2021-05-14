@@ -80,7 +80,7 @@ apply_state () {
     then
         #type=$(grep "type:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
         type="image-policy"
-        echo "Policy Type ${type}"
+        echo "${type}"
         if [[ ${package} == "vmware.tanzu.manage.v1alpha.workspace.policy" ]]
         then
             command="workspace"
@@ -101,6 +101,33 @@ apply_state () {
             fi
         fi
     fi
+
+    if [[ ${kind} == "NetworkPolicy" ]]
+    then
+        #type=$(grep "type:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
+        type="network-policy"
+        echo "Type ${type}"
+        if [[ ${package} == "vmware.tanzu.manage.v1alpha.workspace.policy" ]]
+        then
+            command="workspace"
+            parent_name=$(grep "workspaceName:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')
+        fi
+        if [[ delete -eq 1 ]]
+        then
+            tmc ${command} ${type} delete ${name} --workspace-name ${parent_name}
+        else
+            op=$(tmc ${command} ${type} get ${name} --workspace-name ${parent_name})
+            if [[ $? -eq 0 ]]
+            then
+                echo "Already exists. Updating."
+                tmc ${command} ${type} update ${name} --workspace-name ${parent_name} -f ${1}
+            else
+                echo "Does not exist. Creating."
+                tmc ${command} ${type} create -f ${1}
+            fi
+        fi
+    fi
+
 
     if [[ ${kind} == "IAMPolicy" ]]
     then
