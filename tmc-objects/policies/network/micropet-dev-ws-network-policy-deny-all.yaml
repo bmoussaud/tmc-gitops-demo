@@ -6,5 +6,5 @@ fullName:
   name: deny-all-nw-policy
   workspaceName: bmoussaud-micropet-dev
 spec:
-  policyType: network-policy
-  recipeName: deny-all
+    type: network-policy
+    recipe: deny-all
