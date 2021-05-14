@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# set -x 
+set -x 
 apply_state () {
     delete=0
     if [[ -f ${1} ]]
@@ -42,15 +42,26 @@ apply_state () {
         then
             tmc cluster delete ${name}
         else
-            op=$(tmc cluster get ${name} -o json)
+            #op=$(tmc cluster get ${name} -o json)
+            #search by name if the cluster exists in the global list
+            tmc cluster list | grep ${name}
             if [[ $? -eq 0 ]]
             then
+                echo "Found cluster ${name}"
+                echo "get the m & p"
+                tmc cluster list --name ${name} -o json  |  jq -c '.clusters[0]' > cluster-info.json
+                mgmt=$(cat cluster-info.json | jq '.fullName.managementClusterName' | sed 's/\"//g')
+                echo "managementClusterName: ${mgmt}"
+                prov=$(cat cluster-info.json | jq '.fullName.provisionerName'| sed 's/\"//g')                
+                echo "provisionerName:${prov}"                
                 echo "Already exists. Updating."
-                version=$(echo $op | jq '.objectMeta.resourceVersion')
-                sed -e "s/objectMeta:/objectMeta:\n  resourceVersion: $version/g" ${1} > tmpfile.yaml
-                echo $(cat tmpfile.yaml)
-                tmc cluster update ${name} -f tmpfile.yaml
+                version=$(cat cluster-info.json | jq '.meta.resourceVersion' | sed 's/\"//g' )
+                #sed -e "s/meta:/meta:\\n  resourceVersion: $version/g" ${1} > tmpfile.yaml
+                ./cluster_patch_yaml.py ${1} ${version} tmpfile.yaml
+                echo $(cat tmpfile.yaml)                
+                tmc cluster update ${name} -m ${mgmt} -p ${prov} -f tmpfile.yaml -v 9                
                 rm tmpfile.yaml
+                rm cluster-info.json
             else
                 echo "Does not exist. Creating."
                 tmc cluster create -f ${1}
