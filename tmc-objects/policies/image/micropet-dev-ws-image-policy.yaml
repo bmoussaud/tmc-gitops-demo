@@ -1,15 +1,15 @@
-typeMeta:
-  kind: Policy
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace.policy
+type:
+  kind: ImagePolicy
+  version: v1alpha1
+  package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
-  name: allow-registry-policy
+  name: dev-registry-custom-policy3
   workspaceName: bmoussaud-micropet-dev
 spec:
-  policyType: image-policy
-  recipeName: allow-registry
-  inputValues:
-    registry_repos:
-      list:
-        values:
-        - str: gcr.io
+  input:
+    rules:
+    - hostname: gcr.io
+      tag: {}
+  recipe: custom
+  recipeVersion: v1
+  type: image-policy

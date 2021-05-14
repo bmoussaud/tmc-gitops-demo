@@ -1,0 +1,9 @@
+roleBindings:
+- role: workspace.admin
+  subjects:
+  - kind: GROUP
+    name: AppOps
+- role: workspace.view
+  subjects:
+  - kind: GROUP
+    name: Development
