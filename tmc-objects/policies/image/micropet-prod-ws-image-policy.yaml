@@ -4,7 +4,7 @@ type:
   package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
   name: prod-registry-policy
-  workspaceName: bmoussaud-micropet-dev
+  workspaceName: bmoussaud-micropet-prod
 spec:
   input:
     rules:
