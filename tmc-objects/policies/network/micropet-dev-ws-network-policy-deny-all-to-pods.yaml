@@ -1,21 +1,15 @@
-typeMeta:
-  kind: Policy
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace.policy
+type:
+  kind: NetworkPolicy
+  version: v1alpha1
+  package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
   name: deny-all-to-pods-nw-policy
-  workspaceName: acme-fitness-dev-staging
+  workspaceName: bmoussaud-micropet-dev
 spec:
-  inputValues:
-    to_pod_labels:
-      list:
-        values:
-        - map:
-            value:
-              key:
-                str: app
-              value:
-                str: acme
-  policyType: network-policy
-  recipeName: deny-all-to-pods
-
+    type: network-policy
+    recipe: deny-all-to-pods
+    input:
+      to_pod_labels:      
+      - key: app
+        value: micropet
+      
