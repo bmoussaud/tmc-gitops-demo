@@ -1,15 +1,15 @@
-typeMeta:
-  kind: Policy
-  version: v1alpha
-  package: vmware.tanzu.mc.v1alpha.workspace.policy
+type:
+  kind: ImagePolicy
+  version: v1alpha1
+  package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
-  name: allow-registry-policy
-  workspaceName: acme-fitness-production
+  name: prod-registry-policy
+  workspaceName: bmoussaud-micropet-dev
 spec:
-  policyType: image-policy
-  recipeName: allow-registry
-  inputValues:
-    registry_repos:
-      list:
-        values:
-        - str: harbor.acme.com
+  input:
+    rules:
+    - hostname: harbor.acme.com
+      tag: {}
+  recipe: custom
+  recipeVersion: v1
+  type: image-policy
