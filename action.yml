@@ -14,5 +14,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.day-of-the-week }}
-    - ${{ secrets.TMC_API_TOKEN }}
+
   
