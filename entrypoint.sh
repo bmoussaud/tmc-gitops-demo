@@ -10,14 +10,6 @@ tmc login --no-configure --name gitops
 echo "Move to /github/workspace"
 cd /github/workspace
 
-echo "============ ENV"
-env 
-echo "============ /ENV"
-
-echo "============ IN  /github/workspace"
-find . -ls
-echo "============ OUT /github/workspace"
-
 echo "============ Apply.sh"
 /usr/src/app/apply.sh 
 echo "============ /Apply.sh"

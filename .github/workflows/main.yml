@@ -3,7 +3,7 @@ on: [push]
 jobs:
   tmc_ctl_apply_job:
     runs-on: ubuntu-latest
-    name: Tanzu Mission Control Gitops apply
+    name: TMC Gitops apply
     steps:
       - name: Checkout
         uses: actions/checkout@v2
