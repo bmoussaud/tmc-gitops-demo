@@ -1,21 +1,20 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  tmc_ctl_apply_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: TMC apply
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
-      - name: Hello world action step
+      - name: tmc apply
         uses: ./ # Uses an action in the root directory
-        id: hello
+        id: apply
         with:
-          who-to-greet: 'Mona the Octocat'
+          day-of-the-week: 'Monday'
+          tmc-api-key: ${{ secrets.TMC_API_TOKEN}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
