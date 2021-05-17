@@ -3,13 +3,13 @@ on: [push]
 jobs:
   tmc_ctl_apply_job:
     runs-on: ubuntu-latest
-    name: TMC apply
+    name: Tanzu Mission Control Gitops apply
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 2
-      - name: tmc apply
+      - name: tmcctl apply
         uses: ./ # Uses an action in the root directory
         id: apply
         with:
