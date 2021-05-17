@@ -177,7 +177,7 @@ apply_state () {
     fi
 }
 
-#while read line; do apply_state ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
+while read line; do apply_state ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
 
-while read line; do dump_files ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
+#while read line; do dump_files ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
 
