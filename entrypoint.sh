@@ -3,8 +3,10 @@
 echo "Hello Benoit $1"
 time=$(date)
 
-#echo "TMC Login"
-#tmc login --no-configure --name gitops
+echo "TMC Login with TMC_API_TOKEN ${TMC_API_TOKEN}"
+tmc login --no-configure --name gitops
+
+echo "Move to /github/workspace"
 cd /github/workspace
 
 echo "============ IN  /github/workspace"

@@ -2,10 +2,10 @@
 name: 'Tanzu Mission Control Apply'
 description: 'tmcctl apply'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+  day-of-the-week:  # id of input
+    description: 'Day of the week'
+    required: true   
+    default: Monday 
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -13,4 +13,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.day-of-the-week}}
+  env:
+    - TMC_API_TOKEN: ${{ secrets.TMC_API_TOKEN}}
