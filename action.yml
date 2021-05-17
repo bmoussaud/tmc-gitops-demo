@@ -15,4 +15,4 @@ runs:
   args:
     - ${{ inputs.day-of-the-week}}
   env:
-    - TMC_API_TOKEN: ${{ secrets.TMC_API_TOKEN}}
+    TMC_API_TOKEN: ${{ secrets.TMC_API_TOKEN}}
