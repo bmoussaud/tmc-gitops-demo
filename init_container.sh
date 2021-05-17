@@ -1,1 +1,0 @@
-tmc login --no-configure --name gitops

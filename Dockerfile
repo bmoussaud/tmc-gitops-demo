@@ -15,7 +15,6 @@ ENV TMC_API_TOKEN XXXXX
 
 ADD apply.sh /usr/src/app
 ADD cluster_patch_yaml.py /usr/src/app
-ADD init_container.sh /usr/src/app
 RUN chmod +x /usr/src/app/*
 
 # Copies your code file from your action repository to the filesystem path `/` of the container

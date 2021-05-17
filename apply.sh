@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 set -x 
+
+dump_files () {
+    delete=0
+    if [[ -f ${1} ]]
+    then
+        echo "Processing ${1}"
+    else
+        prev_commit=$(git rev-parse @~)
+        git checkout ${prev_commit} ${1}
+        echo "Processing ${1}"
+        delete=1
+    fi
+}
+
 apply_state () {
     delete=0
     if [[ -f ${1} ]]
@@ -163,4 +177,7 @@ apply_state () {
     fi
 }
 
-while read line; do apply_state ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
+#while read line; do apply_state ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
+
+while read line; do dump_files ${line}; done < <(git diff --name-only HEAD HEAD~1 | grep yaml)
+
