@@ -2,21 +2,13 @@
 name: 'Tanzu Mission Control Apply'
 description: 'tmcctl apply'
 inputs:
-  day-of-the-week:  # id of input
-    description: 'Day of the week'
-    required: true   
-    default: Monday 
   tmc-api-key:  # id of input
     description: 'TMC API Key'
     required: true       
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.day-of-the-week }}
     - ${{ inputs.tmc-api-key }}
 
   

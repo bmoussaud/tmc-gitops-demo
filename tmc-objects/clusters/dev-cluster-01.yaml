@@ -3,7 +3,7 @@ fullName:
   name: bmoussaud-dev-one
   provisionerName: bmoussaud-aws
 meta:
-  description: created by the CLI
+  description: created by the CLII
   labels: 
     owner: bmoussaud
     country: france

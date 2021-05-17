@@ -7,6 +7,9 @@ RUN chmod +x /root/tmc
 FROM python:3
 WORKDIR /usr/src/app
 
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
 RUN apt-get update && apt-get install -y jq git curl
 COPY --from=builder /root/tmc /usr/local/bin/tmc
 RUN chmod +x /usr/local/bin/tmc
