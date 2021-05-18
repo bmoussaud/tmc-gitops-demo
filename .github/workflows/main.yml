@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: tmc apply....
-        uses: ./ # Uses an action in the root directory
+        uses: actions/tmc-gitops-demo@v2
         id: apply
         with:          
           tmc-api-key: ${{ secrets.TMC_API_TOKEN}}      
