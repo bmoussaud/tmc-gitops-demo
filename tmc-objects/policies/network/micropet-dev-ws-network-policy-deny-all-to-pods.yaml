@@ -11,5 +11,6 @@ spec:
     input:
       toPodLabels:
       - key: app
-        value: micropets
+        value: micro-app
         
+
