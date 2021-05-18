@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x 
+#set -x 
 
 dump_files () {
     delete=0
