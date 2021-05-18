@@ -3,7 +3,7 @@ type:
   version: v1alpha1
   package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
-  name: dev-registry-custom-policy3
+  name: dev-registry-custom-policy
   workspaceName: bmoussaud-micropet-dev
 spec:
   input:
