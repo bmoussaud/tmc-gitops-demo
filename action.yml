@@ -6,8 +6,8 @@ inputs:
     description: 'TMC API Key'
     required: true       
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'docker'  
+  image: 'docker://docker.io/bmoussaud/tmc-gitops-demo:0.0.3'
   args:
     - ${{ inputs.tmc-api-key }}
 

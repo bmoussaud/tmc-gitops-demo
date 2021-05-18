@@ -1,7 +1,7 @@
 IMAGE_NAME=bmoussaud/tmc-gitops-demo
-IMAGE_VERSION=0.0.1
+IMAGE_VERSION=0.0.3
 IMAGE=$(IMAGE_NAME):$(IMAGE_VERSION)
-SOURCE_BRANCH=v0.0.1
+SOURCE_BRANCH=v0.0.3
 
 build:
 	docker build \
