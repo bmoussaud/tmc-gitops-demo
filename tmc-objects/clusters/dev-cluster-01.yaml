@@ -7,9 +7,9 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: dev01
+    env: demo01
 spec:
-  clusterGroupName: bmoussaud-dev-gh
+  clusterGroupName: bmoussaud-dev
   tkgAws:
     distribution:
       provisionerCredentialName: bmoussaud-aws-credential-ng
