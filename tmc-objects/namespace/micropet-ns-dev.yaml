@@ -10,7 +10,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: demoGitOps
+    env: benoit
 spec:
   workspaceName: bmoussaud-micropet-dev
 type:
