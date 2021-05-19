@@ -17,6 +17,9 @@ build:
 dockerhub-push: build
 	docker push  $(IMAGE)
 
+docker-runin: build
+	docker run --rm --entrypoint /bin/bash -it $(IMAGE)
+
 docker-run: build
 	docker run -e TMC_API_TOKEN=${TMC_API_TOKEN} --rm  -it $(IMAGE) /bin/bash
 
