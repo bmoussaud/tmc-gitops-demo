@@ -11,7 +11,7 @@ spec:
     input:
       toPodLabels:
       - key: app
-        value: microdev
+        value: microapp
 
 
 
