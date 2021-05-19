@@ -7,7 +7,7 @@ roleBindings:
 - role: workspace.admin
   subjects:
   - kind: GROUP
-    name: DevOps
+    name: DevPet
 - role: workspace.edit
   subjects:
   - kind: GROUP
