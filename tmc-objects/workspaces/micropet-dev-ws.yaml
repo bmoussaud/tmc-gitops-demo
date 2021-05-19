@@ -5,7 +5,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: dev
+    env: dev01
 type:
   kind: Workspace
   package: vmware.tanzu.manage.v1alpha1.workspace
