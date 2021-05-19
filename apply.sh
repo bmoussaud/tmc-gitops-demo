@@ -88,7 +88,7 @@ apply_state () {
         
         if [[ delete -eq 1 ]]
         then                        
-            tmc cluster namespace delete ${name}--cluster-name ${clusterName}      
+            tmc cluster namespace delete ${name} --cluster-name ${clusterName}      
         else
             clusterName=$(grep -m 1 "clusterName:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')            
             #TODO: manage return code
@@ -114,6 +114,7 @@ apply_state () {
                 tmc cluster namespace create -f ${1}
             fi
             rm namespace.json
+            rm cluster-info.json
         fi
     fi
 
