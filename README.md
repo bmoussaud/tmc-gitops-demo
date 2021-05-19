@@ -8,10 +8,14 @@ Tested with
 
 Based on https://www.youtube.com/watch?v=_ROS1xIBxmA
 
+# Before
+1. Create the Cluster Group defined in [tmc-objects/clustergroups/dev.yaml]
+2. Create the dev cluster defined in [tmc-objects/clusters/dev-cluster-01.yaml]
+
 # Demo
 
-1. Create a new Cluster Group
-2. Create a new Cluster
+1. Update the Cluster Group defined in [tmc-objects/clustergroups/dev.yaml]
+2. Create a new Cluster: duplicated the file [tmc-objects/clusters/dev-cluster-01.yaml] and change its name (#3)
 3. Create a new Workspace
 4. Apply policies on clusters
 5. upgrade the dev cluster

@@ -5,7 +5,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: dev01
+    env: dev02
 type:
   kind: ClusterGroup
   package: vmware.tanzu.manage.v1alpha1.clustergroup
