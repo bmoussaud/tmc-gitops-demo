@@ -1,0 +1,19 @@
+fullName:
+  clusterName: bmoussaud-dev-one
+  managementClusterName: aws-hosted
+  name: bmoussaud-ns-dev
+  provisionerName: bmoussaud-aws
+meta:
+  annotations:    
+    vmware.tanzu.manage.template: default
+  description: gitops friendly
+  labels: 
+    owner: bmoussaud
+    country: france
+    env: demo01
+spec:
+  workspaceName: bmoussaud-micropet-dev
+type:
+  kind: Namespace
+  package: vmware.tanzu.manage.v1alpha1.cluster.namespace
+  version: v1alpha1
