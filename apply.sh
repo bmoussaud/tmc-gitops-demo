@@ -83,6 +83,41 @@ apply_state () {
         fi
     fi
 
+    if [[ ${kind} == "Namespace" ]]
+    then
+        
+        if [[ delete -eq 1 ]]
+        then
+            #tmc cluster delete ${name}
+            echo "!! Skip tmc cluster delete ${name}"
+        else
+            clusterName=$(grep -m 1 "clusterName:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')            
+            #TODO: manage return code
+            echo "Found cluster ${clusterName}"
+
+            echo "get the m & p"
+            tmc cluster list --name ${clusterName} -o json  |  jq -c '.clusters[0]' > cluster-info.json
+            
+            mgmt=$(cat cluster-info.json | jq '.fullName.managementClusterName' | sed 's/\"//g')
+            echo "managementClusterName: ${mgmt}"
+
+            prov=$(cat cluster-info.json | jq '.fullName.provisionerName'| sed 's/\"//g')                
+            echo "provisionerName:${prov}"  
+
+            tmc cluster namespace get ${name} --cluster-name ${clusterName} -m ${mgmt} -p ${prov} -o json > namespace.json            
+            if [[ $? -eq 0 ]]
+            then
+                echo "Found namespace ${name}"                
+                echo "Already exists. Updating."
+                tmc cluster namespace update -f ${1} --cluster-name ${clusterName}                
+            else
+                echo "Does not exist. Creating."
+                tmc cluster namespace create -f ${1}
+            fi
+            rm namespace.json
+        fi
+    fi
+
     if [[ ${kind} == "Workspace" ]]
     then
         if [[ delete -eq 1 ]]
