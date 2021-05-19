@@ -7,7 +7,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: demo01
+    env: demo02
 spec:
   clusterGroupName: bmoussaud-dev
   tkgAws:
