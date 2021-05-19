@@ -1,7 +1,3 @@
-tmc workspace delete bmoussaud-micropet-dev-staging 
-tmc workspace delete bmoussaud-micropet-production
-tmc cluster delete bmoussaud-dev-one
-
-tmc clustergroup delete bmoussaud-dev
-tmc clustergroup delete bmoussaud-prod
-tmc clustergroup delete bmoussaud-stage
+tmc cluster namespace delete bmoussaud-ns-dev --cluster-name bmoussaud-dev-one -m aws-hosted -p bmoussaud-aws
+tmc workspace delete bmoussaud-micropet-dev
+tmc cluster delete bmoussaud-dev-demo -m aws-hosted -p bmoussaud-aws

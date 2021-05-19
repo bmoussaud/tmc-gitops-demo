@@ -16,7 +16,15 @@ Based on https://www.youtube.com/watch?v=_ROS1xIBxmA
 
 1. Update the Cluster Group defined in [tmc-objects/clustergroups/dev.yaml](tmc-objects/clustergroups/dev.yaml)
 2. Create a new Cluster: duplicated the file [tmc-objects/clusters/dev-cluster-01.yaml](tmc-objects/clusters/dev-cluster-01.yaml) and change its name (#3)
-3. Create a new Workspace
-4. Apply policies on clusters
-5. upgrade the dev cluster
+3. Create a new Workspace [tmc-objects/workspaces/micropet-dev-ws.yaml](tmc-objects/workspaces/micropet-dev-ws.yaml)
+4. Create a namespace into this Workspace [tmc-objects/namespace/micropet-ns-dev.yaml](tmc-objects/namespace/micropet-ns-dev.yaml)
+4. Apply policies on clusters : access, images, network directory
+5. Upgrade the demo cluster from `1.19.4-1-amazon2` -> `1.19.6-2-amazon2`    
+6. Walkthrough UI.
+
+# After the demo
+````
+./clean.sh
+`````
+
 
