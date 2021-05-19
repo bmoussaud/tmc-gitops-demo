@@ -1,5 +1,5 @@
 fullName:
-  name: bmoussaud-ns-ops
+  name: bmoussaud-ns-dev
   clusterName: bmoussaud-dev-one
   managementClusterName: aws-hosted
   provisionerName: bmoussaud-aws
@@ -10,7 +10,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: demo008
+    env: demogitops
 spec:
   workspaceName: bmoussaud-micropet-dev
 type:
