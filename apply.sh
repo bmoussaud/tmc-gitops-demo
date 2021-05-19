@@ -77,7 +77,7 @@ apply_state () {
                 rm tmpfile.yaml
                 rm cluster-info.json
             else
-                echo "Does not exist. Creating."
+                echo "Does not exist. Creating.${1}"
                 tmc cluster create -f ${1}
             fi
         fi
