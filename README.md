@@ -9,7 +9,7 @@ Tested with
 Based on https://www.youtube.com/watch?v=_ROS1xIBxmA
 
 # Before
-1. Create the Cluster Group defined in [tmc-objects/clustergroups/dev.yaml]
+1. Create the Cluster Group defined in (tmc-objects/clustergroups/dev.yaml)
 2. Create the dev cluster defined in [tmc-objects/clusters/dev-cluster-01.yaml]
 
 # Demo
