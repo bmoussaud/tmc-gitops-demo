@@ -14,8 +14,8 @@ spec:
     distribution:
       provisionerCredentialName: bmoussaud-aws-credential-ng
       region: eu-west-3
-      #version: 1.19.4-1-amazon2
-      version: 1.19.6-2-amazon2
+      version: 1.19.4-1-amazon2
+      #version: 1.19.6-2-amazon2
     settings:
       security:
         sshKey: tmc-keypair
