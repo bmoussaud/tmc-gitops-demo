@@ -87,9 +87,8 @@ apply_state () {
     then
         
         if [[ delete -eq 1 ]]
-        then
-            #tmc cluster delete ${name}
-            echo "!! Skip tmc cluster delete ${name}"
+        then                        
+            tmc cluster namespace delete ${name}--cluster-name ${clusterName}      
         else
             clusterName=$(grep -m 1 "clusterName:" ${1} | cut -d":" -f2 | awk '{$1=$1;print}')            
             #TODO: manage return code
