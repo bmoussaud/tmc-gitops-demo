@@ -10,7 +10,7 @@ meta:
   labels: 
     owner: bmoussaud
     country: france
-    env: dev01
+    env: dev02
 spec:
   workspaceName: bmoussaud-micropet-dev
 type:
