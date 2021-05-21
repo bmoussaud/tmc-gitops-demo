@@ -3,12 +3,12 @@ type:
   version: v1alpha1
   package: vmware.tanzu.manage.v1alpha.workspace.policy  
 fullName:
-  name: dev-registry-grc-policy
+  name: dev-registry-docker-policy
   workspaceName: bmoussaud-micropet-dev
 spec:
   input:
     rules:
-    - hostname: gcr.io
+    - hostname: docker.io
       tag: {}
   recipe: custom
   recipeVersion: v1
