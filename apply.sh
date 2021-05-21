@@ -71,7 +71,7 @@ apply_state () {
                 echo "Already exists. Updating."
                 version=$(cat cluster-info.json | jq '.meta.resourceVersion' | sed 's/\"//g' )
                 #sed -e "s/meta:/meta:\\n  resourceVersion: $version/g" ${1} > tmpfile.yaml
-                ./cluster_patch_yaml.py ${1} ${version} tmpfile.yaml
+                ./cluster_patch_yaml.sh ${1} ${version} tmpfile.yaml
                 echo $(cat tmpfile.yaml)                
                 tmc cluster update ${name} -m ${mgmt} -p ${prov} -f tmpfile.yaml -v 9                
                 rm tmpfile.yaml
