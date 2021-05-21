@@ -12,7 +12,7 @@ Tested with
 * namespaces
 * policies: IAM, Registry, Network
 
-Based on https://www.youtube.com/watch?v=_ROS1xIBxmA by @KeithRichardLee
+Based on https://www.youtube.com/watch?v=_ROS1xIBxmA by [Keith Richard Lee](https://github.com/KeithRichardLee)
 
 # Before
 1. Create the Cluster Group defined in [tmc-objects/clustergroups/dev.yaml](tmc-objects/clustergroups/dev.yaml)
